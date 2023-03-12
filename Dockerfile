@@ -8,4 +8,4 @@ COPY . /app
 
 RUN npm install
 
-RUN ng build --prod
+RUN ng build
