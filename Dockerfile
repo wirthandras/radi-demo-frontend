@@ -12,3 +12,5 @@ RUN ng build
 
 FROM nginx:alpine
 COPY --from=node /app/dist/radi-demo-frontend /usr/share/nginx/html
+
+EXPOSE 80
