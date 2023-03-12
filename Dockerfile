@@ -1,4 +1,4 @@
-FROM node:lts-alpine3.16
+FROM node:lts-alpine3.17
 
 RUN npm install -g @angular/cli
 
