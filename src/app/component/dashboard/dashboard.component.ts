@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { DashboardListItem } from './dashboard-list-item.model';
 import { Dashboard } from './dashboard.model';
 
@@ -10,15 +9,16 @@ import { Dashboard } from './dashboard.model';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  private apiGetMeasurementUrl = `${environment.apiBaseUrl}/Radi/GetMeasurements`;
-  private apiGenerateUrl = `${environment.apiBaseUrl}/Radi/Generate`;
-  private apiPayUrl = `${environment.apiBaseUrl}/Radi/Pay`;
+  private apiBaseUrl= `http://${location.hostname}:40052`;
+  private apiGetMeasurementUrl = `${this.apiBaseUrl}/Radi/GetMeasurements`;
+  private apiGenerateUrl = `${this.apiBaseUrl}/Radi/Generate`;
+  private apiPayUrl = `${this.apiBaseUrl}/Radi/Pay`;
 
   dashboardResponse: Dashboard | undefined;
 
   displayedColumns: string[] = ["id", "name", "payedAt", "row-actions"];
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
     this.refreshDashboard();
